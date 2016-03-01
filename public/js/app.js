@@ -4,9 +4,18 @@ var socket = io();
 
 console.log(name + ' joined ' + room);
 
+// Update h1 tag
+jQuery('.room-title').text(room); 
+
+
 //When connection from front end to server is made, do the following
 socket.on('connect', function () {
 	console.log('Connected to socket.io server!');
+	//allows user to join specific room on front end
+	socket.emit('joinRoom', {
+		name: name,
+		room: room
+	});
 });
 
 //listens for message event being emitted from the server, and does the following

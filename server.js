@@ -7,9 +7,23 @@ var io = require('socket.io')(http);
 
 app.use(express.static(__dirname + '/public'));
 
+//contains user info such as room, socket id, etc
+var clientInfo = {};
+
 //When connection from server to front end, do the following
 io.on('connection', function (socket) {
 	console.log('User connected via socket.io!');
+
+	//server side code for custom rooms
+	socket.on('joinRoom', function (req) {
+		clientInfo[socket.id] = req;
+		socket.join(req.room);
+		socket.broadcast.to(req.room).emit('message', {
+			name: 'System',
+			text: req.name + ' has joined!',
+			timestamp: moment().valueOf()
+		});
+	});
 
 	socket.on('message', function (message) {
 		console.log('Message received: ' + message.text);
@@ -18,7 +32,7 @@ io.on('connection', function (socket) {
 		message.timestamp = moment().valueOf();
 
 		//sends it to every single person including the sender
-		io.emit('message', message);
+		io.to(clientInfo[socket.id].room).emit('message', message);
 		//sends it to every single person but the sender
 		//socket.broadcast.emit('message', message);
 	});
