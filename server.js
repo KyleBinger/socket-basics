@@ -10,9 +10,51 @@ app.use(express.static(__dirname + '/public'));
 //contains user info such as room, socket id, etc
 var clientInfo = {};
 
+//Sends current users to provided socket
+function sendCurrentUsers (socket) {
+	var info = clientInfo[socket.id];
+	var users = [];
+
+	if (typeof info === 'undefined') {
+		return;
+	}
+
+	Object.keys(clientInfo).forEach(function (socketId) {
+		var localUsersInfo = clientInfo[socketId];
+
+		if (info.room === localUsersInfo.room) {
+			users.push(localUsersInfo.name)
+		}
+	});
+
+	socket.emit('message', {
+		name: 'System',
+		text: 'Current users: ' + users.join(', '),
+		timestamp: moment().valueOf()
+	});
+
+}
+
 //When connection from server to front end, do the following
 io.on('connection', function (socket) {
 	console.log('User connected via socket.io!');
+
+	//broadcast meesage when user disconnects and delete their data
+	socket.on('disconnect', function () {
+
+		var userData = clientInfo[socket.id];
+
+		if (typeof userData !== 'undefined') {
+			socket.leave(userData.room);
+			io.to(userData.room).emit('message', {
+				name: 'System',
+				text: userData.name + ' has left the chat.',
+				timestamp: moment().valueOf()
+			});
+
+			delete clientInfo[socket.id];
+		}
+	});
 
 	//server side code for custom rooms
 	socket.on('joinRoom', function (req) {
@@ -29,12 +71,19 @@ io.on('connection', function (socket) {
 		console.log('Message received: ' + message.text);
 
 
-		message.timestamp = moment().valueOf();
+		if (message.text === '@currentUsers') {
+			sendCurrentUsers(socket);
+		} else {
 
-		//sends it to every single person including the sender
-		io.to(clientInfo[socket.id].room).emit('message', message);
-		//sends it to every single person but the sender
-		//socket.broadcast.emit('message', message);
+			message.timestamp = moment().valueOf();
+
+			//sends it to every single person including the sender
+			io.to(clientInfo[socket.id].room).emit('message', message);
+			//sends it to every single person but the sender
+			//socket.broadcast.emit('message', message);
+		}
+
+		
 	});
 
 	//emit event
