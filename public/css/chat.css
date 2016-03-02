@@ -1,0 +1,118 @@
+.container {
+  width: 1400px;
+  margin: 0 auto;
+}
+
+.clearfix {
+  overflow: auto;
+}
+
+body {
+	background: #34495e;
+}
+
+@font-face {
+    font-family: Open-Sans-Semi-Bold;
+    src: url(../fonts/open-sans/opensans-semibold.ttf);
+}
+
+@font-face {
+    font-family: Lora;
+    src: url(../fonts/Lora/Lora-Regular.ttf);
+}
+
+@font-face {
+    font-family: Lora-Bold;
+    src: url(../fonts/Lora/Lora-Bold.ttf);
+}
+
+
+h1 {
+	margin-top: 15px;
+	font-size: 28px;
+	font-family: Open-Sans-Semi-Bold;
+}
+
+input {
+	font-size: 35px;
+	font-family: Lora;
+	color: #21303F;
+}
+
+input::-webkit-input-placeholder {
+	color: #21303F !important;
+}
+ 
+input:-moz-placeholder { /* Firefox 18- */
+	color: #21303F !important;  
+}
+ 
+input::-moz-placeholder {  /* Firefox 19+ */
+	color: #21303F !important;  
+}
+ 
+input:-ms-input-placeholder {  
+	color: #21303F !important;  
+}
+
+p {
+	margin-bottom: 7px;
+}
+
+a {
+	color: #DADFE1;
+	font-family: Lora;
+}
+
+strong {
+	font-family: Lora-Bold;
+}
+
+
+#main {
+	margin-top: 50px;
+}
+
+#sidebar {
+	width: 19%;
+	height: 800px;
+	padding: 1%;
+	color: #DADFE1;
+	float: left;
+	background: #21303F;
+}
+
+
+#chat {
+	width: 77%;
+	padding: 1%;
+	color: #21303F;
+	font-size: 22px;
+	float: right;
+	background: #DADFE1;
+}
+
+.messages {
+	height: 645px;
+	overflow: auto;
+}
+
+
+#userType {
+	height:130px;
+	width: 78%;
+	padding: 1%;
+	border: 2px solid #21303F;
+	float: left;
+}
+
+#submit {
+	height:156px;
+	width: 19.6%;
+	padding: 1%;
+	color: #DADFE1;
+	border: 2px solid #21303F;
+	background: #21303F;
+	float: right;
+}
+

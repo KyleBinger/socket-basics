@@ -5,7 +5,7 @@ var socket = io();
 console.log(name + ' joined ' + room);
 
 // Update h1 tag
-jQuery('.room-title').text(room); 
+jQuery('.room-title').text('Chatting in: ' + room); 
 
 
 //When connection from front end to server is made, do the following

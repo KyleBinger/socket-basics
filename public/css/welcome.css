@@ -52,6 +52,22 @@ input {
 	margin-bottom: 50px;
 }
 
+input::-webkit-input-placeholder {
+	color: #DADFE1 !important;
+}
+ 
+input:-moz-placeholder { /* Firefox 18- */
+	color: #DADFE1 !important;  
+}
+ 
+input::-moz-placeholder {  /* Firefox 19+ */
+	color: #DADFE1 !important;  
+}
+ 
+input:-ms-input-placeholder {  
+	color: #DADFE1 !important;  
+}
+
 
 #submit {
 	height: 80px;
