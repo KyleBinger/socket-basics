@@ -1,0 +1,68 @@
+
+body {
+	background: #21303F;
+}
+
+.container {
+  width: 1400px;
+  margin: 0 auto;
+}
+
+@font-face {
+    font-family: Open-Sans-Semi-Bold;
+    src: url(../fonts/open-sans/opensans-semibold.ttf);
+}
+
+@font-face {
+    font-family: Lora;
+    src: url(../fonts/Lora/Lora-Regular.ttf);
+}
+
+#speech1 {
+	margin-top: 20px;
+}
+
+#speech2 {
+	margin-left: 85%;
+}
+
+h1 {
+	margin-top: -200px;
+	margin-bottom: 100px;
+	color: #DADFE1;
+	font-size: 75px;
+	font-family: Open-Sans-Semi-Bold;
+	text-align: center;
+}
+
+form {
+	text-align: center;
+}
+
+
+input {
+	background: #21303F;
+	color: #DADFE1;
+	height: 70px;
+	width: 750px;
+	padding: 5px;
+	font-size: 40px;
+	font-family: Lora;
+	border: 3px solid #DADFE1;
+	margin-bottom: 50px;
+}
+
+
+#submit {
+	height: 80px;
+	width: 760px;
+	background: #DADFE1;
+	color: #21303F;
+	border: 0px;
+}
+
+#speech3 {
+	margin-left: 27%;
+	margin-top: 30px;
+}
+

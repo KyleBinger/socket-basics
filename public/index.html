@@ -3,16 +3,32 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Join chat</title>
+	<link rel="stylesheet" type="text/css" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/welcome.css">
 </head>
 <body>
-	<h1>Join Chat</h1>
 
-	<form action="/chat.html">
-		<input type="text" name="name" placeholder="Enter your display name." />
-		<!-- Add room input -->
-		<input type="text" name="room" placeholder="Enter the chat room you want to enter." />
-		<input type="submit" value="Join Chat"/>
-	</form>
+	<section id="main">
+		<div class="container"> 
+
+			<img id="speech1" src="images/speech_bubble1.png">
+			<br>
+			<br>
+			<img id="speech2" src="images/speech_bubble2.png">
+
+			<h1>Welcome To Let's Gab!</h1>
+
+			<form action="/chat.html">
+				<input type="text" name="name" placeholder="Enter your display name." />
+				<br>
+				<input type="text" name="room" placeholder="Enter the chat room you want to enter." />
+				<br>
+				<input id="submit" type="submit" value="Join Chat"/>
+			</form>
+
+			<img id="speech3" src="images/speech_bubble3.png">
+		</div>
+	</section>
 
 </body>
 </html>
